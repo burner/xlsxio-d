@@ -5,9 +5,14 @@ authors "Laeeth Isharc"
 copyright "Copyright © 2019, Laeeth Isharc, Kaleidic Associates Advisory Limited and Symmetry Investments"
 license "mit"
 targetType "library"
-libs "xlsxio_read"
+// libs "xlsxio_read"
+dependency "dxml" version="~>0.4.0"
+dependency "archive" version="~>0.6.0"
 sourcePaths "source/"
 importPaths "source/"
+
+sourceFiles "$PACKAGE_DIR/xlsxio/build/libxlsxio_read.a" platform="posix"
+
 configuration "library-char" {
 	targetType "library"
 }

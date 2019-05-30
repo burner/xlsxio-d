@@ -3,10 +3,10 @@ PROJECT(xlsxio)
 
 # parameters
 OPTION(BUILD_STATIC "Build static libraries" ON)
-OPTION(BUILD_SHARED "Build shared libraries" ON)
-OPTION(BUILD_TOOLS "Build tools" ON)
-OPTION(BUILD_EXAMPLES "Build examples" ON)
-OPTION(WITH_LIBZIP "Use libzip instead of Minizip" OFF)
+OPTION(BUILD_SHARED "Build shared libraries" OFF)
+OPTION(BUILD_TOOLS "Build tools" OFF)
+OPTION(BUILD_EXAMPLES "Build examples" OFF)
+OPTION(WITH_LIBZIP "Use libzip instead of Minizip" ON)
 OPTION(WITH_WIDE "Also build UTF-16 library (libxlsxio_readw)" OFF)
 SET(ZLIB_DIR "" CACHE PATH "Path to the zlib library")
 IF(WITH_LIBZIP)
@@ -193,7 +193,7 @@ INSTALL(TARGETS ${ALLTARGETS}
   RUNTIME DESTINATION bin
 )
 INSTALL(DIRECTORY include/
-  DESTINATION include 
+  DESTINATION include
   FILES_MATCHING PATTERN "xlsxio*.h"
 )
 IF(MINGW AND BUILD_SHARED)

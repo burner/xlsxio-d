@@ -5,13 +5,16 @@ authors "Laeeth Isharc"
 copyright "Copyright © 2019, Laeeth Isharc, Kaleidic Associates Advisory Limited and Symmetry Investments"
 license "mit"
 targetType "library"
-// libs "xlsxio_read"
+//libs "xlsxio_read" "expat" "libzip"
+libs "gnutls" "nettle" "bz2"
 dependency "dxml" version="~>0.4.0"
 dependency "archive" version="~>0.6.0"
 sourcePaths "source/"
 importPaths "source/"
 
 sourceFiles "$PACKAGE_DIR/xlsxio/build/libxlsxio_read.a" platform="posix"
+sourceFiles "$PACKAGE_DIR/expat/expat/libexpat.a" platform="posix"
+sourceFiles "$PACKAGE_DIR/libzip/build/lib/libzip.a" platform="posix"
 
 configuration "library-char" {
 	targetType "library"
@@ -22,5 +25,9 @@ configuration "library-wide" {
 	targetType "library"
 }
 
+preBuildCommands "make -C $PACKAGE_DIR libzip/build/lib/libzip.a" platform="posix"
+preBuildCommands "make -C $PACKAGE_DIR expat/expat/libexpat.a" platform="posix"
 preBuildCommands "make -C $PACKAGE_DIR xlsxio/build/libxlsxio_read.a" platform="posix"
-lflags "-L$PACKAGE_DIR/libxlsxio/build/" platform="posix"
+lflags "$PACKAGE_DIR/libzip/build/lib/libzip.a" platform="posix"
+lflags "$PACKAGE_DIR/xlsxio/build/libxlsxio_read.a" platform="posix"
+lflags "$PACKAGE_DIR/expat/expat/libexpat.a" platform="posix"

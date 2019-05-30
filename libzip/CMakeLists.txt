@@ -7,18 +7,20 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
 PROJECT(libzip C)
 
-OPTION(ENABLE_COMMONCRYPTO "Enable use of CommonCrypto" ON)
-OPTION(ENABLE_GNUTLS "Enable use of GnuTLS" ON)
-OPTION(ENABLE_MBEDTLS "Enable use of mbed TLS" ON)
-OPTION(ENABLE_OPENSSL "Enable use of OpenSSL" ON)
-OPTION(ENABLE_WINDOWS_CRYPTO "Enable use of Windows cryptography libraries" ON)
+OPTION(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-OPTION(ENABLE_BZIP2 "Enable use of BZip2" ON)
+OPTION(ENABLE_COMMONCRYPTO "Enable use of CommonCrypto" OFF)
+OPTION(ENABLE_GNUTLS "Enable use of GnuTLS" OFF)
+OPTION(ENABLE_MBEDTLS "Enable use of mbed TLS" OFF)
+OPTION(ENABLE_OPENSSL "Enable use of OpenSSL" OFF)
+OPTION(ENABLE_WINDOWS_CRYPTO "Enable use of Windows cryptography libraries" OFF)
 
-OPTION(BUILD_TOOLS "Build tools in the src directory (zipcmp, zipmerge, ziptool)" ON)
-OPTION(BUILD_REGRESS "Build regression tests" ON)
-OPTION(BUILD_EXAMPLES "Build examples" ON)
-OPTION(BUILD_DOC "Build documentation" ON)
+OPTION(ENABLE_BZIP2 "Enable use of BZip2" OFF)
+
+OPTION(BUILD_TOOLS "Build tools in the src directory (zipcmp, zipmerge, ziptool)" OFF)
+OPTION(BUILD_REGRESS "Build regression tests" OFF)
+OPTION(BUILD_EXAMPLES "Build examples" OFF)
+OPTION(BUILD_DOC "Build documentation" OFF)
 
 INCLUDE(CheckFunctionExists)
 INCLUDE(CheckIncludeFiles)
@@ -58,8 +60,6 @@ IF(WIN32)
 ELSE()
   SET(WINDOWS_CRYPTO_FOUND FALSE)
 ENDIF()
-
-OPTION(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 
 OPTION(SHARED_LIB_VERSIONNING "Add SO version in .so build" ON)

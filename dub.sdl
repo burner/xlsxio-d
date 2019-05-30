@@ -6,7 +6,7 @@ copyright "Copyright © 2019, Laeeth Isharc, Kaleidic Associates Advisory Limite
 license "mit"
 targetType "library"
 //libs "xlsxio_read" "expat" "libzip"
-libs "gnutls" "nettle" "bz2"
+//libs "gnutls" "nettle" "bz2"
 dependency "dxml" version="~>0.4.0"
 dependency "archive" version="~>0.6.0"
 sourcePaths "source/"

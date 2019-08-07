@@ -1,9 +1,6 @@
-libzip/build/lib/libzip.a:
-	cd libzip && mkdir -p build && cd build && cmake .. && make -j6
+xlsxio-0.2.21/libxlsxio_read.a: xlsxio-0.2.21.tar.xz
+	cd xlsxio-0.2.21 && cmake -G"Unix Makefiles" && make -j4
 
-expat/expat/libexpat.a:
-	export
-	cd expat/expat && pwd && make -j6
-
-xlsxio/build/libxlsxio_read.a:
-	cd xlsxio/ && mkdir -p build && cd build && cmake .. && make -j6
+xlsxio-0.2.21.tar.xz:
+	wget https://github.com/brechtsanders/xlsxio/releases/download/0.2.21/xlsxio-0.2.21.tar.xz
+	tar -xvf xlsxio-0.2.21.tar.xz

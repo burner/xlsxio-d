@@ -20,5 +20,11 @@ configuration "library-wide" {
 	targetType "library"
 }
 
+// posix
 preBuildCommands "make -C $PACKAGE_DIR" platform="posix"
 lflags "$PACKAGE_DIR/xlsxio-0.2.21/libxlsxio_read.a" platform="posix"
+
+// windows
+libs "xlsxio_read" platform="windows"
+lflags "/LIBPATH:$PACKAGE_DIR\\xlsxio-0.2.21-win64\\lib\\" platform="windows-x86_64"
+lflags "/LIBPATH:$PACKAGE_DIR\\xlsxio-0.2.21-win32\\lib\\" platform="windows-x86_32"
